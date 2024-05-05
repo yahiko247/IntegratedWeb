@@ -1,0 +1,62 @@
+
+.login-container {
+    background-color: rgba(26, 43, 88, 1);
+}
+
+.custom-btn {
+    background-image: linear-gradient(to right, rgba(6, 31, 70, 1), rgba(42, 63, 135, 1));
+    /* Gradient colors */
+    border: none;
+    /* Remove border */
+    color: white;
+    /* Text color */
+    padding: 10px 20px;
+    /* Padding */
+    border-radius: 21px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Cursor style */
+    transition: all 0.3s ease;
+    /* Smooth transition */
+}
+
+.custom-btn:hover {
+    transform: scale(1.05);
+    /* Increase button size on hover */
+}
+
+
+.register-container {
+    background-color: rgba(26, 43, 88, 1);
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    height: 100vh;
+}
+
+/* sizing*/
+
+.leaflet-container {
+    height: 100vh;
+}
+
+/* .cluster-icon {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color: aliceblue;
+    transform: translate(-25%,-25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 1.5rem;
+
+} */
