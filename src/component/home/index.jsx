@@ -80,9 +80,9 @@ export default function home() {
         </div>
         <Divider />
         <List style={{color:'white', fontSize: '5px'}}>
-        {['Brg Certificate', 'Brg Officials', 'Brg Indigency'].map((text, index) => (
+        {['Barangay Certificate', 'Barangay Officials', 'Barangay Indigency'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <Link to={`/${text === 'Brg Certificate' ? 'cert' : text.toLowerCase()}`} style={{textDecoration: 'none', color:'white'}}>
+            <Link to={`/${text === 'Barangay Certificate' ? 'cert' : text.toLowerCase()}`} style={{textDecoration: 'none', color:'white'}}>
             <ListItemButton>
               <ListItemIcon>
               {index === 0 ?  <FileCopyIcon style={{color:'white'}}/> : index === 1 ? <GavelIcon style={{color:'white'}}/> : <InsertDriveFileIcon style={{color:'white'}}/>}
@@ -95,9 +95,9 @@ export default function home() {
       </List>
         <Divider />
         <List style={{color: "white", fontSize:'5px'}}>
-        {['Brg Clearance', 'Residents Record', 'Request Documents', 'View Map'].map((text, index) => (
+        {['Barangay Clearance', 'Residents Record', 'Request Documents', 'View Map'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <Link to={`/${text === 'Brg Clearance' ? 'brgClearance' : text === "Residents Record" ? 'brgRecords': text === 'Request Documents' ? 'official' : text === 'View Map' ? 'map': text.toLowerCase()}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to={`/${text === 'Barangay Clearance' ? 'brgClearance' : text === "Residents Record" ? 'brgRecords': text === 'Request Documents' ? 'official' : text === 'View Map' ? 'map': text.toLowerCase()}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 ?  <FileCopyIcon style={{color: 'white'}}/> : index ===1 ? <FileOpenIcon style={{color:'white'}}/> : index ===2 ?<SourceIcon style={{color:'white'}}/> : index ===3 ? <AddLocationAltIcon style={{color: 'white'}}/>: null}

@@ -81,7 +81,7 @@ const Register = () => {
                                 required
                                 value={confirmPassword}
                                 onChange={(e) => {
-                                    setConfirmPassword(e.target.value);
+                                    setconfirmPassword(e.target.value);
                                 }}
                                 className="form-control"
                                 id="confirmPassword"
