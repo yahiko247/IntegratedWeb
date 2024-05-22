@@ -30,6 +30,7 @@ import { db } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import img1 from "../../image/salimbalan.png"
 
 // Modal style
 const style = {
@@ -173,20 +174,23 @@ export default function Population() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{backgroundColor:'rgba(240, 69, 151, 1)'}}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: 'rgba(240, 69, 151, 1)' }}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none'}) }}
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Populations
           </Typography>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <img src={img1} alt="" style={{ width: '50px', height: 'auto' }} />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer

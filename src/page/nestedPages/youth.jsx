@@ -30,6 +30,7 @@ import { db } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import img1 from '../../image/salimbalan.png';
 
 // Modal style
 const style = {
@@ -184,9 +185,12 @@ export default function Youth() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{flexGrow: 1}}>
             Youth
           </Typography>
+          <div style={{display:'flex', justifyContent:'flex-end'}}>
+            <img src={img1} alt="" style={{height:'auto', width:'50px'}}/>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer

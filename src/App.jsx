@@ -10,6 +10,7 @@ import BarangayOfficial from "./page/BrgOff";
 import HousePage from "./page/nestedPages/house";
 import Population from "./page/nestedPages/population";
 import Youth from "./page/nestedPages/youth";
+import BrgIndi from "./page/brgIndi";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/population" element={<Population/>}/>
             <Route path="/youth" element={<Youth/>}/>
             <Route path="/official" element={<BarangayOfficial/>}/>
+            <Route path="/indi" element={<BrgIndi/>}/>
           </Routes>
       </AuthProvider>
     </Router>
