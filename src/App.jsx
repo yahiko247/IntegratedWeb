@@ -6,9 +6,11 @@ import Home from "./component/home";
 import { AuthProvider } from "./context/authContext";
 import Map from "./leafletmap/mapsample";
 import BrgCertPage from "./page/BrgCertificate";
+import BarangayOfficial from "./page/BrgOff";
 import HousePage from "./page/nestedPages/house";
 import Population from "./page/nestedPages/population";
 import Youth from "./page/nestedPages/youth";
+
 function App() {
   return (
     <Router>
@@ -24,6 +26,7 @@ function App() {
             <Route path="/houses" element={<HousePage/>}/>
             <Route path="/population" element={<Population/>}/>
             <Route path="/youth" element={<Youth/>}/>
+            <Route path="/official" element={<BarangayOfficial/>}/>
           </Routes>
       </AuthProvider>
     </Router>

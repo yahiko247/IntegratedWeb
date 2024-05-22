@@ -13,7 +13,7 @@ const Downloadpdf = ({rootElementId, downloadFileName}) => {
         })
     }
     return <div>
-        <button type="button" class="btn btn-success" onClick={DownloadFileDocument}>Download file</button>
+        <button type="button" className="btn btn-success" onClick={DownloadFileDocument}>Download file</button>
     </div>
 };
 export default Downloadpdf;

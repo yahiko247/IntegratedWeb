@@ -82,7 +82,7 @@ export default function home() {
         <List style={{color:'white', fontSize: '5px'}}>
         {['Barangay Certificate', 'Barangay Officials', 'Barangay Indigency'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <Link to={`/${text === 'Barangay Certificate' ? 'cert' : text.toLowerCase()}`} style={{textDecoration: 'none', color:'white'}}>
+            <Link to={`/${text === 'Barangay Certificate' ? 'cert' : text === 'Barangay Officials' ? 'official': text.toLowerCase()}`} style={{textDecoration: 'none', color:'white'}}>
             <ListItemButton>
               <ListItemIcon>
               {index === 0 ?  <FileCopyIcon style={{color:'white'}}/> : index === 1 ? <GavelIcon style={{color:'white'}}/> : <InsertDriveFileIcon style={{color:'white'}}/>}
@@ -116,7 +116,7 @@ export default function home() {
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
        <Toolbar/>
-       <Typography paragraph>
+       <Box>
           <div style={{display: 'flex', flexWrap: 'wrap', gap: '5px'}}>
             <Card style={{margin:'20px', background: 'rgba(45, 153, 8, 1)', color: 'white', width:'300px', height: '150px'}}>
               <CardContent>
@@ -150,7 +150,7 @@ export default function home() {
               </CardContent>
             </Card>
           </div>
-        </Typography>
+        </Box>
         <Typography paragraph>
              <div className='text-2xl font-bold pt-14'>Hello {currentUser.displayName ? currentUser.displayName : currentUser.email}, you are now logged in.</div>
         </Typography>

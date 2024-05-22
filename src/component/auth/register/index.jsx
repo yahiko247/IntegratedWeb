@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Navigate, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/authContext'
 import { doCreateUserWithEmailAndPassword } from '../../../firebase/auth'
+import img1 from "../../../image/salimbalan.png";
 
 const Register = () => {
 
@@ -24,11 +25,11 @@ const Register = () => {
     }
 
     return (
-       <>
+        <div className='row w-100'>
+            <div className='col-md-8' style={{background:'rgba(26, 43, 88, 1)'}}>
             {userLoggedIn && <Navigate to={'/home'} replace={true} />}
-
             <main className="d-flex justify-content-center align-items-center vh-100">
-                <div className="w-50 text-gray-600 space-y-5 p-4 shadow-lg border rounded-lg">
+                <div className="w-50 text-gray-600 space-y-5 p-4 shadow-lg rounded" style={{background:'white'}}>
                     <div className="text-center mb-6">
                         <div className="mt-2">
                             <h3 className="text-gray-800 text-xl font-semibold">Create a New Account</h3>
@@ -99,13 +100,23 @@ const Register = () => {
                         </button>
                         <div className="text-center">
                             Already have an account?{' '}
-                            <a href="/login" className="text-center hover:underline font-weight-bold">Continue</a>
+                            <a href="/login" className="text-center hover:underline font-weight-bold" style={{textDecoration:'none'}}>Continue</a>
                         </div>
                     </form>
                 </div>
             </main>
-        </>
-
+            </div>
+            <div className='col-md-3 d-flex justify-content-center align-items-center'>
+                <div style={{justifyContent:'center', alignContent:'center'}}>
+                    <div className='d-flex justify-content-end'> <img src={img1} alt="" style={{height:'auto', width:'100px', }}/></div>
+                    <h3 >Welcome to </h3>
+                    <p>Brangay Information Management System.
+                    BIMS can track residents record such as personal to family information,
+                    complaints to amicable settlement information (Barangay Justice System) and can create daily reports for the Barangay.
+                    </p>
+                </div>
+            </div>
+        </div>
     )
 }
 

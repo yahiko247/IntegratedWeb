@@ -121,7 +121,7 @@ export default function Population() {
   const [newContact, setNewContact] = useState(0);
   const [newProvince, setNewProvince] = useState('');
   const [newBarangay, setNewBarangay] = useState('');
-  const [newZone, setNewZone] = useState(0);
+  const [newZone, setNewZone] = useState(0);  
   const [newMunicipal, setNewMunicipal] = useState('');
 
   const [users, setUsers] = useState([]);

@@ -4,10 +4,6 @@ import img2 from '../image/certificate.png'
 import Downloadpdf from '../component/jsdownload/download'
 
 
-
-
-
-
 function BrgCertPage() {
     const [name, setName] = useState('')
   return (

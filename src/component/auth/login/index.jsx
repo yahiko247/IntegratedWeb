@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import { useAuth } from '../../../context/authContext'
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../../firebase/auth'
+import img1 from "../../../image/salimbalan.png"
 
 
 
@@ -23,10 +24,11 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className='row w-100'>
+            <div className='col-md-8' style={{background:'rgba(26, 43, 88, 1)'}}>
             {userLoggedIn && <Navigate to="/home" replace={true} />}
-            <main className="d-flex justify-content-center align-items-center vh-100">
-                <div className="w-50 text-gray-600 space-y-5 p-4 shadow-lg border rounded-lg">
+            <main className="d-flex justify-content-center align-items-center vh-100" >
+                <div className="w-50 text-gray-600 space-y-5 p-4 shadow-lg border rounded"style={{background:'white'}}>
                     <div className="text-center">
                         <div className="mt-2">
                             <h3 className="text-gray-800 text-xl font-semibold">Welcome Back</h3>
@@ -82,6 +84,18 @@ const Login = () => {
                     </p>
                 </div>
             </main>
+
+            </div>
+              <div className='col-md-3 d-flex justify-content-center align-items-center'>
+                   <div style={{justifyContent:'center', alignContent:'center'}}>
+                    <div className='d-flex justify-content-end'> <img src={img1} alt="" style={{height:'auto', width:'100px', }}/></div>
+                    <h3 >Welcome to </h3>
+                    <p>Brangay Information Management System.
+                    BIMS can track residents record such as personal to family information,
+                    complaints to amicable settlement information (Barangay Justice System) and can create daily reports for the Barangay.
+                    </p>
+                </div>
+            </div>
         </div>
     )
 }
