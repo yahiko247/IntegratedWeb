@@ -11,6 +11,10 @@ import HousePage from "./page/nestedPages/house";
 import Population from "./page/nestedPages/population";
 import Youth from "./page/nestedPages/youth";
 import BrgIndi from "./page/brgIndi";
+import BarangayClearance from "./page/brgClearance";
+import BarangayRecords from "./page/BrgRec";
+import ZonPage from "./page/nestedPages/zone";
+
 
 function App() {
   return (
@@ -29,6 +33,9 @@ function App() {
             <Route path="/youth" element={<Youth/>}/>
             <Route path="/official" element={<BarangayOfficial/>}/>
             <Route path="/indi" element={<BrgIndi/>}/>
+            <Route path="/brgClea" element={<BarangayClearance/>}/>
+            <Route path="/brgRec" element={<BarangayRecords/>}/>
+            <Route path="/zone" element={<ZonPage/>}/>
           </Routes>
       </AuthProvider>
     </Router>

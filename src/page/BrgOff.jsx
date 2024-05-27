@@ -29,6 +29,7 @@ import img8 from "../image/barangay officials/bs.jpg"
 import img9 from "../image/barangay officials/bk.jpg"
 import img10 from "../image/barangay officials/ch.jpg"
 import img11 from "../image/barangay officials/sk.jpg"
+import img12 from "../image/salimbalan.png"
 
 const drawerWidth = 240;
 
@@ -92,7 +93,7 @@ export default function BarangayOfficial() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} style={{background:'rgb(26,43, 88,1)'}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -103,9 +104,12 @@ export default function BarangayOfficial() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{flexGrow: 1}}>
             Barangay Officials
           </Typography>
+          <div style={{ direction: 'flex', justifyContent:'flex-end'}}>
+            <img src={img12} alt="" style={{ height:'auto', width:'50px'}}/>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer

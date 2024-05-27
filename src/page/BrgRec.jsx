@@ -18,9 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import img1 from "../../image/salimbalan.png"
-import PropTypes from 'prop-types';
-import Collapse from '@mui/material/Collapse';
+import img1 from '../image/salimbalan.png'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -28,12 +26,24 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { useState } from 'react';
-import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
-import { useEffect } from 'react';
-import { db } from '../../firebase/firebase'
+import { addDoc, collection, deleteDoc, getDocs, doc } from 'firebase/firestore';
+import { db } from "../firebase/firebase";
+import { useEffect, useState} from 'react';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
 
 const drawerWidth = 240;
 
@@ -82,118 +92,48 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-
-//table settings
-function ZoneInBarangay(name) {
-  return {
-    name,
-  };
-}
-
-
-
-
-function Row(props) {
-  const { row } = props;
-  const [open, setOpen] = React.useState(false);
-  const [users, setUsers] = useState([]);
-  const userCollectionReference = collection(db, 'users_data');
-  const [newName, setNewName] = useState('');
-  const [newMiddleName, setNewMiddleName] = useState('');
-  const [newLastName, setNewLastName] = useState('');
-  const [newZone, setNewZone] = useState(0);
-  const [newMunicipal, setNewMunicipal] = useState('');
-  const [newBarangay, setNewBarangay] = useState('');
-  const [newProvince, setNewProvince] = useState('');
-  const createUser = async () => {
-    await addDoc(userCollectionReference, {
-        firstname: newName,
-        Middlename: newMiddleName,
-        lastname: newLastName,
-        zone: newZone,
-        municipality: newMunicipal,
-        barangay: newBarangay,
-        province: newProvince
-    });
-  };
-
-  const deleteUser = async (id) => {
-    const userDoc = doc(db, 'users_data', id);
-    await deleteDoc(userDoc);
-  };
-
-  useEffect(() => {
-    const getUsers = async () => {
-        const data = await getDocs(userCollectionReference);
-        setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-    };
-    getUsers();
-  }), [];
-
-  return (
-    <React.Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-        <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {row.name}
-        </TableCell>
-
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Members
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Purok</TableCell>
-                    <TableCell>Names</TableCell>
-                   
-
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {users.map((row) => (
-                    <TableRow key={row.id}>
-                      <TableCell component="th" scope="row">
-                        {row.zone}
-                      </TableCell>
-                      <TableCell> {row.firstname},{row.lastname}</TableCell>
-                      
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
-  );
-}
-
-
-export default function ZonPage() {
+export default function BarangayRecords() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
- 
+  const [open2, setOpen2] = useState(false);
+  //opem modal
+  const handleOpen2 = () => setOpen2(true);
+  const handleClose2 = () => setOpen2(false);
+  //collecting data
+const [newName, setNewName] = useState('');
+const [newDrug, setNewDrug] = useState(0);
+const [newPunch, setNewPunch] = useState(0);
+const [newReport, setNewReport] = useState(0);
+const [newRumble, setNewRumble] = useState(0);
 
-  const rows = [
-  ZoneInBarangay('Zone 1'),
-  ZoneInBarangay('zone 2' ),
-];
-  
+//creating table
+const [users, setUsers] = useState([]);
+const userCollectionReference = collection(db, 'records');
+
+const createUser = async () => {
+  await addDoc(userCollectionReference, {
+    name: newName,
+    report: newReport,
+    rumble: newRumble,
+    punch: newPunch,
+    drugs: newDrug
+  });
+};
+
+
+const deleteUser = async (id) => {
+  const userDoc = doc(db, 'records', id);
+  await deleteDoc(userDoc);
+};
+
+useEffect(() => {
+  const getUsers = async () => {
+    const data = await getDocs(userCollectionReference);
+    setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+  };
+  getUsers();
+}, []);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -206,22 +146,22 @@ export default function ZonPage() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} style={{background:'rgba(26,43,88,1)'}}>
+      <AppBar position="fixed" open={open} style={{background:'rgba(26, 43, 88, 1)'}}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{ mr: 2, ...(open && { display: 'none' }),  }}
           >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{flexGrow: 1}}>
-            Zone Page
+            Barangay Records
           </Typography>
-          <div style={{direction:'flex', justifyContent:'flex-end'}}>
-            <img src={img1} alt="" style={{height:'auto', width:'50px'}}/>
+          <div style={{display:'flex', justifyContent:'flex-end'}}>
+            <img src={img1} alt="" style={{height: 'auto', width:'50px'}}/>
           </div>
         </Toolbar>
       </AppBar>
@@ -271,23 +211,58 @@ export default function ZonPage() {
         </List>
       </Drawer>
       <Main open={open}>
-        <DrawerHeader />
+        <DrawerHeader /> 
+        <Button onClick={handleOpen2}>Open Modal</Button>
+        <Modal
+          open={open2}
+          onClose={handleClose2}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <h3> Residents Record</h3>
+           <div>
+            <input type="text" placeholder="fullname..." onChange={(event) => { setNewName(event.target.value); }}  style={{margin:'5px'}}/>
+            <input type="number" placeholder="Record..." onChange={(event) => { setNewReport(event.target.value); }} style={{margin:'5px'}} />
+            <input type="number" placeholder="enter attemp..." onChange={(event) => { setNewRumble(event.target.value); }} style={{margin:'5px'}}/>
+            <input type="number" placeholder="enter attemp..." onChange={(event) => { setNewPunch(event.target.value); }} style={{margin:'5px'}}/>
+            <input type="number" placeholder="enter attemp..." onChange={(event) => { setNewDrug(event.target.value); }} style={{margin:'5px'}}/>
+           </div>
+           <button type='button' className='btn btn-success' onClick={createUser}>Add residents</button>
+          </Box>
+        </Modal>
         <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Barangay Salimbalan</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Residents Name</TableCell>
+                <TableCell align="right">Barangay report</TableCell>
+                <TableCell align="right">Ramble</TableCell>
+                <TableCell align="right">Random punch</TableCell>
+                <TableCell align="right">Drug Case</TableCell>
+                <TableCell align="right">Button</TableCell>
 
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {users.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.report}</TableCell>
+                  <TableCell align="right">{row.punch}</TableCell>
+                  <TableCell align="right">{row.rumble}</TableCell>
+                  <TableCell align="right">{row.drugs}</TableCell>
+                  <TableCell align="right"><button onClick={() => deleteUser(row.id)}>delete</button></TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Main>
     </Box>
   );
