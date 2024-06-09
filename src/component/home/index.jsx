@@ -31,22 +31,13 @@ import img1 from "../../image/salimbalan.png"
 import { doSignOut } from '../../firebase/auth';
 
 
-
-
-
-
-
-
 const drawerWidth = 240;
 
 export default function home() {
       const { currentUser } = useAuth();
       const navigate = useNavigate()
       const { userLoggedIn } = useAuth()
-   
 
-     
-      
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -149,6 +140,13 @@ export default function home() {
               <CardContent>
                 <Typography variant="h5" component="h2">
                 <Link to='/zone' style={{textDecoration: 'none', color:'white'}}>Zone</Link>
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card style={{margin:'20px', background: 'rgba(40, 125, 105, 1)', color: 'white', width:'300px', height: '150px'}}>
+              <CardContent>
+                <Typography variant="h5" component="h2">
+                <Link to='/appdev' style={{textDecoration: 'none', color:'white'}}>Appdev</Link>
                 </Typography>
               </CardContent>
             </Card>
