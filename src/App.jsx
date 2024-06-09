@@ -14,7 +14,7 @@ import BrgIndi from "./page/brgIndi";
 import BarangayClearance from "./page/brgClearance";
 import BarangayRecords from "./page/BrgRec";
 import ZonPage from "./page/nestedPages/zone";
-
+import Appdev from "./page/appdev";
 
 function App() {
   return (
@@ -36,6 +36,7 @@ function App() {
             <Route path="/brgClea" element={<BarangayClearance/>}/>
             <Route path="/brgRec" element={<BarangayRecords/>}/>
             <Route path="/zone" element={<ZonPage/>}/>
+            <Route path="/appdev" element={<Appdev/>}/>
           </Routes>
       </AuthProvider>
     </Router>
